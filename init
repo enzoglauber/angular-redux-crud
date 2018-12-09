@@ -1,0 +1,29 @@
+# UPDATE Node Using Ubuntu
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -sL https://deb.nodesource.com/setup_10.x | bash -
+apt-get install -y nodejs
+
+##################################
+##################################
+npm install -g @angular/cli
+ng new --style=scss base-client
+npm rebuild node-sass
+//
+docker-compose run --rm app npm install
+
+//stages
+ng g m stages
+ng g c shared/navbar
+
+ng g m management
+ng g c management/management-panel
+ng g c management/shortcuts
+ng g c management/alerts
+
+ng g s shared/resources/action
+ng g c shared/navbar
+ng g c shared/menu
+ng g c shared/breadcrumb

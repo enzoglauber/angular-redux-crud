@@ -1,0 +1,26 @@
+<div>
+  TOTAL USER: {{ (users$ | async).list.length }}
+
+  <form #f="ngForm" novalidate (ngSubmit)="save(f)">
+
+    <input type="text" name="name" [ngModel]="activeUser?.name" required #labelRef class="form-control">
+
+    <input type="text" name="email" [ngModel]="activeUser.email" required class="form-control">
+
+    <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+      {{activeUser.id ? 'UPDATE' : 'ADD' }}
+    </button>
+
+    <button class="btn btn-default" type="button" (click)="actions.resetActive()" *ngIf="activeUser.id">ADD NEW</button>
+  </form>
+
+  <hr />
+  <li class="list-group-item" *ngFor="let item of (users$ | async).list" [ngClass]="{active: item.id === (active$ | async)?.id}"
+    (click)="actions.setActiveUser(item.id)">
+    {{item.name}}
+    <button class="btn btn-xs btn-danger pull-right" (click)="actions.deleteUser( item.id)">
+      delete
+    </button>
+  </li>
+
+</div>
